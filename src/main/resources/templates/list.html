@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<h1>Student Management</h1>
+
+<a href="/students/add">
+    <button class="add-btn">+ Add New Student</button>
+</a>
+
+<div class="table-box">
+
+<table>
+    <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="s : ${students}">
+            <td th:text="${s.rollNo}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.branch}"></td>
+            <td>
+                <form th:action="@{'/students/delete/' + ${s.id}}" method="post" style="display:inline;">
+                    <button class="delete-btn">Delete</button>
+                </form>
+
+                <a th:href="@{'/students/edit/' + ${s.id}}">
+                    <button class="update-btn">Update</button>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+</body>
+</html>

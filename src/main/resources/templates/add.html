@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <title>Add Student</title>
+</head>
+<body>
+
+<h1>Add New Student</h1>
+
+<p class="error-message" th:text="${error}"></p>
+
+<form action="/students/add" method="post">
+
+    Roll No:<br>
+    <input type="number" name="rollNo" th:value="${student.rollNo}">
+    <br><br>
+
+    Name:<br>
+    <input type="text" name="name" th:value="${student.name}">
+    <br><br>
+
+    Branch:<br>
+    <input type="text" name="branch" th:value="${student.branch}">
+    <br><br>
+
+    <button class="add-btn">Add Student</button>
+</form>
+
+<br>
+<a href="/students"><button class="update-btn">Back to List</button></a>
+
+</body>
+</html>
